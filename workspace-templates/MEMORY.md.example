@@ -1,0 +1,78 @@
+# MEMORY.md — Long-Term Memory
+
+**Last Synthesized:** YYYY-MM-DD
+**Purpose:** Current-state knowledge base — not a log. History lives in memory/YYYY-MM-DD.md
+
+---
+
+## 🔌 Active Integrations
+
+### Slack
+- Socket Mode, responds to `@Vera Bot` in all channels
+- Slash commands active: `/reset`, `/status`, `/model`, `/context`, `/new`
+
+### Gmail (gog CLI)
+- Account: `your-sandbox@gmail.com`
+- Authenticated for: **Gmail only** — Calendar/Drive not authenticated, do not attempt
+- Check status: `gog auth list` — binary at `/home/node/.local/bin/gog`
+
+### Brave Search
+- Active — use for all web search and news queries
+- Always include today's date; discard results older than 48 hours
+
+---
+
+## ⚙️ Session & Model
+
+- **Primary Model:** `openrouter/x-ai/grok-4.1-fast`
+- **Fallback chain:** GLM → Haiku (Copilot) → Sonnet (Copilot) → Haiku (direct) → DeepSeek → Kimi → Gemini → Sonnet (direct) → MiniMax → GPT-4.1 (Copilot) → Codex
+- **Spending limit:** $XX/month
+- **Session:** idle mode, resets after 8 hours of inactivity
+- **Token management:** monitor with `/status`, reset at 70%+
+
+---
+
+## 🕐 Active Cron Jobs
+
+| Job | Schedule | Status |
+|-----|----------|--------|
+| Daily Email Report | 10 AM PST, Mon-Fri | ✅ Active |
+| Daily AI & Security News | 11 AM PST, daily | ✅ Active |
+| Weekly Memory Review | Fridays 4 PM PST | ✅ Active |
+| Nightly Git Backup | 07:00 UTC | ✅ Active |
+
+---
+
+## 🧠 Critical Config Rules
+
+- Never nest `session` under `agents.defaults` — top-level only
+- Never remove `commands.useAccessGroups: false` — breaks slash commands
+- Never remove `channels.slack.commands.native: true` — breaks slash commands
+- `openclaw doctor --fix` — use with caution, always backup `openclaw.json` first
+- Config restarts: use SIGUSR1 for parameter changes only
+- New model registration: always requires full `docker-compose down && up`
+- `.env` changes: require full `down` + `up` to take effect
+- `wakeMode: "now"` is mandatory for all cron jobs when heartbeat is disabled
+
+---
+
+## 🗝️ Key Reminders
+
+- `openclaw.json` backup before every change: `cp openclaw.json openclaw.json.backup-$(date +%Y%m%d)`
+- Workspace files backed up nightly via git to your private workspace repo
+- GitHub PAT expiry: check your token expiry date and renew before it lapses
+
+---
+
+## 🚀 Current Priorities
+
+*(Update this section with your own priorities)*
+
+- Improve and harden current setup
+- Explore spawning subagents
+- Expand Gmail OAuth to Calendar + Drive when ready
+- Cloudflare Workers proxy (hide API key from container)
+
+---
+
+*Synthesized weekly — keep this file lean and current-state only*

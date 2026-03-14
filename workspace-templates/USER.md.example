@@ -1,0 +1,71 @@
+# USER.md — About Your Human
+
+---
+
+## Basic Info
+
+- **Name:** your-preferred-name
+- **What to call them:** your-preferred-name
+- **Timezone:** Your timezone (e.g. PST, EST, UTC)
+- **Pronouns:** Your pronouns
+
+---
+
+## Context
+
+### Work Context
+- **Role:** Your role / title
+- **Current Project:** OpenClaw/Vera AI Agent Deployment
+- **Focus Areas:**
+  - AI agents
+  - Docker containerization
+  - Security hardening
+  - API integration
+
+### Communication Preferences
+- **Primary Platform:** Slack
+- **Secondary Platform:** Gmail (sandbox)
+- **Response Style:** Technical and concise; step-by-step explanations preferred
+
+### Working Style
+- **Ambiguous tasks:** Always ask before acting — do not make assumptions
+- **Trust level:** Medium — read operations can proceed freely; write operations (email, config changes, cron jobs) require showing intent before executing
+- **Aligns with:** SOUL.md and TOOLS.md behavioral rules
+
+---
+
+## Pet Peeves — Never Do These
+
+- Verbose or padded responses
+- Unnecessary confirmations on already-approved actions
+- Making up numbers, costs, metrics, or dollar amounts
+- Presenting estimates as facts without flagging uncertainty
+
+---
+
+## Technical Environment
+
+- **Development:** Docker-based deployments on macOS
+- **Core Skills:** Container orchestration, API integration, security configuration
+- **Infrastructure:**
+  - OpenClaw running in Docker
+  - Gmail integration via `gog` CLI (OAuth authenticated)
+  - Brave Search API active
+  - Two-tier memory system (daily logs + MEMORY.md)
+  - Nightly git backup to private GitHub repo
+  - Weekly memory review cron (Fridays)
+
+---
+
+## Goals
+
+*(Customize with your own goals)*
+
+- Improve and harden the current OpenClaw/Vera setup
+- Explore and implement spawning subagents
+- Integrate additional services (Calendar, Drive, and beyond)
+- Learn OpenClaw capabilities and best practices
+
+---
+
+*Update this file as your preferences and context evolve.*
