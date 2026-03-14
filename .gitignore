@@ -1,1 +1,26 @@
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# Secrets — never commit these
+.env
+*.env
+.env.*
+
+# OpenClaw sensitive files
+openclaw.json
+openclaw.json.backup*
+
+# Backup directories
+openclaw-backup-*/
+.openclaw-host-backup-*/
+
+# Logs
+*.log
+memory/
+
+# Editor
+.vscode/
+.cursor/
+*.swp
