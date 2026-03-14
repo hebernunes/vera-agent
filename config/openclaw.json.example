@@ -1,0 +1,109 @@
+{
+  "_comment": "vera-agent — OpenClaw config template. Copy to ~/.openclaw-host/openclaw.json and fill in your values.",
+
+  "agents": {
+    "defaults": {
+
+      "thinkingDefault": "off",
+
+      "model": {
+        "primary": "openrouter/x-ai/grok-4.1-fast",
+        "fallbacks": [
+          "openrouter/z-ai/glm-4.7-flash",
+          "github-copilot/claude-haiku-4.5",
+          "github-copilot/claude-sonnet-4.6",
+          "anthropic/claude-haiku-4-5-20251001",
+          "openrouter/anthropic/claude-haiku-4.5",
+          "openrouter/deepseek/deepseek-v3.2",
+          "openrouter/moonshotai/kimi-k2.5",
+          "openrouter/google/gemini-3-flash-preview",
+          "anthropic/claude-sonnet-4-5-20250514",
+          "openrouter/minimax/minimax-m2.5",
+          "github-copilot/gpt-4.1",
+          "github-copilot/claude-opus-4.6",
+          "openai-codex/gpt-5.4-codex"
+        ]
+      },
+
+      "models": {
+        "openrouter/x-ai/grok-4.1-fast": {
+          "params": { "cacheRetention": "long" }
+        },
+        "openrouter/z-ai/glm-4.7-flash": {},
+        "anthropic/claude-haiku-4-5-20251001": {
+          "params": { "cacheRetention": "long" }
+        },
+        "openrouter/anthropic/claude-haiku-4.5": {
+          "params": { "cacheRetention": "long" }
+        },
+        "openrouter/deepseek/deepseek-v3.2": {
+          "params": { "cacheRetention": "long" }
+        },
+        "openrouter/moonshotai/kimi-k2.5": {},
+        "openrouter/google/gemini-3-flash-preview": {},
+        "anthropic/claude-sonnet-4-5-20250514": {
+          "params": { "cacheRetention": "long" }
+        },
+        "openrouter/minimax/minimax-m2.5": {},
+        "github-copilot/claude-haiku-4.5": {},
+        "github-copilot/claude-sonnet-4.6": {},
+        "github-copilot/gpt-4.1": {},
+        "github-copilot/claude-opus-4.6": {},
+        "openai-codex/gpt-5.4-codex": {}
+      }
+    }
+  },
+
+  "auth": {
+    "profiles": {
+      "github-copilot:github": {
+        "provider": "github-copilot",
+        "mode": "token"
+      }
+    }
+  },
+
+  "gateway": {
+    "mode": "local",
+    "bind": "loopback",
+    "port": 18789
+  },
+
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "useAccessGroups": false
+  },
+
+  "channels": {
+    "slack": {
+      "mode": "socket",
+      "webhookPath": "/slack/events",
+      "enabled": true,
+      "commands": {
+        "native": true
+      },
+      "userTokenReadOnly": true,
+      "groupPolicy": "open"
+    }
+  },
+
+  "tools": {
+    "web": {
+      "search": {
+        "provider": "brave",
+        "apiKey": "${BRAVE_API_KEY}",
+        "maxResults": 5,
+        "timeoutSeconds": 30,
+        "cacheTtlMinutes": 15
+      }
+    }
+  },
+
+  "session": {
+    "reset": {
+      "mode": "idle",
+      "idleMinutes": 480
+    }
+  }
+}

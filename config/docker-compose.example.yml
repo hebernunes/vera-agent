@@ -1,0 +1,68 @@
+# =============================================================================
+# vera-agent — Docker Compose Template
+# =============================================================================
+# Copy this file to docker-compose.simple.yml and adjust paths as needed.
+#
+# Security defaults enforced:
+#   - Non-root user (uid 1000)
+#   - Loopback-only port binding (127.0.0.1)
+#   - Secrets via environment variables only
+#   - DNS hardened to 8.8.8.8 / 8.8.4.4
+# =============================================================================
+
+services:
+  openclaw:
+    build: .
+    container_name: openclaw-test
+    user: "1000:1000"                          # Never run as root
+    ports:
+      - "127.0.0.1:18789:18789"                # Loopback only — not internet-exposed
+    environment:
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      SLACK_BOT_TOKEN: ${SLACK_BOT_TOKEN}
+      SLACK_APP_TOKEN: ${SLACK_APP_TOKEN}
+      OPENCLAW_GATEWAY_TOKEN: ${GATEWAY_TOKEN}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+      GOG_KEYRING_PASSWORD: ${GOG_KEYRING_PASSWORD}
+      BRAVE_API_KEY: ${BRAVE_API_KEY}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+      PATH: "/home/node/.local/bin:/usr/local/go/bin:${PATH}"
+    volumes:
+      # Primary config mount — OpenClaw requires rw access to manage its own state
+      # Create this directory first: mkdir -p ~/.openclaw-host && chmod 700 ~/.openclaw-host
+      - ~/.openclaw-host:/home/node/.openclaw:rw
+
+      # Runtime data (sessions, cron state)
+      - openclaw-data:/tmp/openclaw
+
+      # gog CLI binary — persists across container restarts
+      - local-bin:/home/node/.local/bin:rw
+
+      # Go compiler — persists across container restarts
+      - go-install:/usr/local/go:rw
+
+      # OAuth tokens — Gmail (gog) + Codex + GitHub Copilot
+      - gog-config:/home/node/.config:rw
+
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    restart: unless-stopped
+
+volumes:
+  openclaw-data:
+  local-bin:
+  go-install:
+  gog-config:
+
+# =============================================================================
+# Volume notes
+# =============================================================================
+# openclaw-data  — OpenClaw runtime state, sessions, cron scheduler
+# local-bin      — gog CLI binary (built from source inside container)
+# go-install     — Go compiler (required to build gog)
+# gog-config     — OAuth token storage for Gmail, Codex, and GitHub Copilot
+#
+# If volumes become root-owned (causes EACCES errors), fix with:
+#   docker run --rm -v openclaw_<volume-name>:/data alpine chown -R 1000:1000 /data
+# =============================================================================
