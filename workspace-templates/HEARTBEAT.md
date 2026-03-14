@@ -4,7 +4,7 @@
 
 ## Daily Email Report (10:00 AM PST, Mon-Fri only)
 
-**Send email to:** veraagenttest@gmail.com  
+**Send email to:** your-sandbox@gmail.com  
 **Subject:** "Vera Daily Report for Cowboy - [DATE]"
 
 ### Content:
@@ -58,6 +58,6 @@
 ---
 
 ## Notes
-- Currently using test inbox (veraagenttest@gmail.com)
+- Currently using test inbox (your-sandbox@gmail.com)
 - Calendar and inbox sections will be minimal until real data added
 - Main value: Daily spending tracking and system health monitoring

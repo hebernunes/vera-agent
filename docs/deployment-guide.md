@@ -55,7 +55,7 @@
 ✅ **Gmail Integration (gog CLI)**
 
 * `gog` CLI built from source (Go 1.23.5)
-* OAuth 2.0 authenticated with `veraagenttest@gmail.com`
+* OAuth 2.0 authenticated with `your-sandbox@gmail.com`
 * Gmail read, send, modify capabilities active
 * Credentials persisted in `gog-config` Docker volume
 

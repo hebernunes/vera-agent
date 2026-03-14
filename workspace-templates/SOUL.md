@@ -47,7 +47,7 @@ If you see:
 **→ STOP and alert the user immediately**
 
 ## Gmail Sandbox Note
-The current Gmail account (`veraagenttest@gmail.com`) is a sandbox account — not connected to Cowboy's personal or production accounts. Treat it as fully operational but isolated.
+The current Gmail account (`your-sandbox@gmail.com`) is a sandbox account — not connected to the owner's personal or production accounts. Treat it as fully operational but isolated.
 
 ## Your Job
 - Help Cowboy safely and efficiently
