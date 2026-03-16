@@ -4,7 +4,7 @@
 [![Docker](https://img.shields.io/badge/platform-Docker-2496ED?logo=docker&logoColor=white)](https://docker.com)
 [![Status](https://img.shields.io/badge/status-operational-brightgreen)](https://x.com/VeraizAI)
 [![Security](https://img.shields.io/badge/design-security--first-red)](./SECURITY.md)
-[![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
+
 
 A self-hosted AI agent deployment built on [OpenClaw](https://openclaw.ai), running in Docker on macOS with a security-first design. Vera lives in Slack, handles email via Gmail, searches the web via Brave, and manages her own memory and logging autonomously.
 
